@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2ea217b51f0761aa27dde3fba70b339d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2ea217b51f0761aa27dde3fba70b339d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2ea217b51f0761aa27dde3fba70b339d = L.map(
+                "map_2ea217b51f0761aa27dde3fba70b339d",
+                {
+                    center: [47.13010824622373, 8.108324538800993],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_2ea217b51f0761aa27dde3fba70b339d);
+
+            
+
+        
+    
+            var tile_layer_9c219aee3b2ef3951a43e0d3603132b0 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_9c219aee3b2ef3951a43e0d3603132b0.addTo(map_2ea217b51f0761aa27dde3fba70b339d);
+        
+    
+            map_2ea217b51f0761aa27dde3fba70b339d.fitBounds(
+                [[47.01346801243169, 7.842687870905013], [47.24674848001576, 8.373961206696972]],
+                {}
+            );
+        
+    
+        function geo_json_7fd420e6047ac341766d0000c7eeed50_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.5, "weight": 2};
+            }
+        }
+        function geo_json_7fd420e6047ac341766d0000c7eeed50_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"fillOpacity": 0.75};
+            }
+        }
+        function geo_json_7fd420e6047ac341766d0000c7eeed50_pointToLayer(feature, latlng) {
+            var opts = {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3388ff", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2, "stroke": true, "weight": 3};
+            
+            let style = geo_json_7fd420e6047ac341766d0000c7eeed50_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_7fd420e6047ac341766d0000c7eeed50_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_7fd420e6047ac341766d0000c7eeed50.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_7fd420e6047ac341766d0000c7eeed50_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_7fd420e6047ac341766d0000c7eeed50 = L.geoJson(null, {
+                onEachFeature: geo_json_7fd420e6047ac341766d0000c7eeed50_onEachFeature,
+            
+                style: geo_json_7fd420e6047ac341766d0000c7eeed50_styler,
+                pointToLayer: geo_json_7fd420e6047ac341766d0000c7eeed50_pointToLayer,
+        });
+
+        function geo_json_7fd420e6047ac341766d0000c7eeed50_add (data) {
+            geo_json_7fd420e6047ac341766d0000c7eeed50
+                .addData(data);
+        }
+            geo_json_7fd420e6047ac341766d0000c7eeed50_add({"bbox": [7.842687870905013, 47.01346801243169, 8.373961206696972, 47.24674848001576], "features": [{"bbox": [8.296840049209552, 47.05851956215392, 8.296840049209552, 47.05851956215392], "geometry": {"coordinates": [8.296840049209552, 47.05851956215392], "type": "Point"}, "id": "0", "properties": {"AI_name": "Company Cluster (Luzerner Kantonsspital)", "RELI": 66522123, "employees": 5980}, "type": "Feature"}, {"bbox": [8.355304349165335, 47.09045185510595, 8.355304349165335, 47.09045185510595], "geometry": {"coordinates": [8.355304349165335, 47.09045185510595], "type": "Point"}, "id": "1", "properties": {"AI_name": "Schindler", "RELI": 66962159, "employees": 1977}, "type": "Feature"}, {"bbox": [7.970482815295591, 47.19991721713224, 7.970482815295591, 47.19991721713224], "geometry": {"coordinates": [7.970482815295591, 47.19991721713224], "type": "Point"}, "id": "2", "properties": {"AI_name": "Galliker Transport AG", "RELI": 64032278, "employees": 1871}, "type": "Feature"}, {"bbox": [8.130727418419431, 47.14059782208356, 8.130727418419431, 47.14059782208356], "geometry": {"coordinates": [8.130727418419431, 47.14059782208356], "type": "Point"}, "id": "3", "properties": {"AI_name": "Company Cluster (Swiss Paraplegic Research)", "RELI": 65252213, "employees": 1546}, "type": "Feature"}, {"bbox": [8.311156913872294, 47.04851658210452, 8.311156913872294, 47.04851658210452], "geometry": {"coordinates": [8.311156913872294, 47.04851658210452], "type": "Point"}, "id": "4", "properties": {"AI_name": "Company Cluster (SBB)", "RELI": 66632112, "employees": 1404}, "type": "Feature"}, {"bbox": [8.325780736943637, 47.0574001025836, 8.325780736943637, 47.0574001025836], "geometry": {"coordinates": [8.325780736943637, 47.0574001025836], "type": "Point"}, "id": "5", "properties": {"AI_name": "Company Cluster (Klinik St. Anna)", "RELI": 66742122, "employees": 1379}, "type": "Feature"}, {"bbox": [8.31370072164844, 47.04309988309715, 8.31370072164844, 47.04309988309715], "geometry": {"coordinates": [8.31370072164844, 47.04309988309715], "type": "Point"}, "id": "6", "properties": {"AI_name": "Company Cluster (CSS Insurance, headquarters)", "RELI": 66652106, "employees": 1337}, "type": "Feature"}, {"bbox": [8.308539659662191, 47.04943599512897, 8.308539659662191, 47.04943599512897], "geometry": {"coordinates": [8.308539659662191, 47.04943599512897], "type": "Point"}, "id": "7", "properties": {"AI_name": "Company Cluster (Konkordia AG)", "RELI": 66612113, "employees": 1262}, "type": "Feature"}, {"bbox": [7.957739350237436, 47.24674848001576, 7.957739350237436, 47.24674848001576], "geometry": {"coordinates": [7.957739350237436, 47.24674848001576], "type": "Point"}, "id": "8", "properties": {"AI_name": "Company Cluster (KNF Micro AG)", "RELI": 63932330, "employees": 1233}, "type": "Feature"}, {"bbox": [8.3059077743626, 47.049455902889505, 8.3059077743626, 47.049455902889505], "geometry": {"coordinates": [8.3059077743626, 47.049455902889505], "type": "Point"}, "id": "9", "properties": {"AI_name": "Company Cluster (Renaissance Lucerne Hotel)", "RELI": 66592113, "employees": 1208}, "type": "Feature"}, {"bbox": [8.373961206696972, 47.10289528417174, 8.373961206696972, 47.10289528417174], "geometry": {"coordinates": [8.373961206696972, 47.10289528417174], "type": "Point"}, "id": "10", "properties": {"AI_name": "Company Cluster (NielsenIQ (Switzerland) GmbH)", "RELI": 67102173, "employees": 1173}, "type": "Feature"}, {"bbox": [8.361935528066237, 47.09309742965164, 8.361935528066237, 47.09309742965164], "geometry": {"coordinates": [8.361935528066237, 47.09309742965164], "type": "Point"}, "id": "11", "properties": {"AI_name": "Company Cluster (ALDI SUISSE)", "RELI": 67012162, "employees": 1063}, "type": "Feature"}, {"bbox": [8.303261390477706, 47.048576304394174, 8.303261390477706, 47.048576304394174], "geometry": {"coordinates": [8.303261390477706, 47.048576304394174], "type": "Point"}, "id": "12", "properties": {"AI_name": "Company Cluster (Innercore Pharmaceuticals AG)", "RELI": 66572112, "employees": 1059}, "type": "Feature"}, {"bbox": [8.363330119854162, 47.09758398643327, 8.363330119854162, 47.09758398643327], "geometry": {"coordinates": [8.363330119854162, 47.09758398643327], "type": "Point"}, "id": "13", "properties": {"AI_name": "Migros Cooperative Lucerne", "RELI": 67022167, "employees": 1023}, "type": "Feature"}, {"bbox": [8.308481322741692, 47.0458382132719, 8.308481322741692, 47.0458382132719], "geometry": {"coordinates": [8.308481322741692, 47.0458382132719], "type": "Point"}, "id": "14", "properties": {"AI_name": "Company Cluster (Bezzola AG Luzern)", "RELI": 66612109, "employees": 1016}, "type": "Feature"}, {"bbox": [8.313730062822822, 47.044898774038074, 8.313730062822822, 47.044898774038074], "geometry": {"coordinates": [8.313730062822822, 47.044898774038074], "type": "Point"}, "id": "15", "properties": {"AI_name": "Company Cluster (Michel Cars AG)", "RELI": 66652108, "employees": 1004}, "type": "Feature"}, {"bbox": [8.308525074697556, 47.048536549916825, 8.308525074697556, 47.048536549916825], "geometry": {"coordinates": [8.308525074697556, 47.048536549916825], "type": "Point"}, "id": "16", "properties": {"AI_name": "Company Cluster (The Hotel Lucerne, Autograph Collection)", "RELI": 66612112, "employees": 993}, "type": "Feature"}, {"bbox": [8.304301549257206, 47.03147688826576, 8.304301549257206, 47.03147688826576], "geometry": {"coordinates": [8.304301549257206, 47.03147688826576], "type": "Point"}, "id": "17", "properties": {"AI_name": "Company Cluster (Migros-Supermarkt - Luzern - Allmend)", "RELI": 66582093, "employees": 991}, "type": "Feature"}, {"bbox": [8.307180030078882, 47.046747619919934, 8.307180030078882, 47.046747619919934], "geometry": {"coordinates": [8.307180030078882, 47.046747619919934], "type": "Point"}, "id": "18", "properties": {"AI_name": "Company Cluster (Implenia Schweiz AG)", "RELI": 66602110, "employees": 951}, "type": "Feature"}, {"bbox": [8.253884726585827, 47.090316537511924, 8.253884726585827, 47.090316537511924], "geometry": {"coordinates": [8.253884726585827, 47.090316537511924], "type": "Point"}, "id": "19", "properties": {"AI_name": "R\u00f6\u00f6sli Funktionsdecken R\u00f6\u00f6sli AG", "RELI": 66192158, "employees": 942}, "type": "Feature"}, {"bbox": [8.309943254164219, 47.0548226853389, 8.309943254164219, 47.0548226853389], "geometry": {"coordinates": [8.309943254164219, 47.0548226853389], "type": "Point"}, "id": "20", "properties": {"AI_name": "Hotel Schweizerhof Luzern\n\nAnalysis:\nLooking at the list, several items refer to Lucerne (Luzern) as a location, but many of the entries are distinct companies, not merely location names. In similar cases\u2014where there is an overlap of companies identifiable by a common umbrella or clear clustering (as with Roche or Zurich Invest Bankstiftung in the earlier examples)\u2014one would either pick that central, recurring name or indicate a \u201cCompany Cluster.\u201d Here, however, although several entries include the city name \u201cLuzern\u201d (\u2011e.g., Hotel Luzernerhof, doodah Luzern, Fusszentrum Luzern), they represent different businesses. Among the companies listed, the two hotels stand out. Of these, Hotel Schweizerhof Luzern is a well\u2010known, established landmark with broader recognition.\n\nThus, based on relevance and prominence in the list, the most relevant company is chosen as Hotel Schweizerhof Luzern.", "RELI": 66622119, "employees": 891}, "type": "Feature"}, {"bbox": [8.307281973673376, 47.05304373638108, 8.307281973673376, 47.05304373638108], "geometry": {"coordinates": [8.307281973673376, 47.05304373638108], "type": "Point"}, "id": "21", "properties": {"AI_name": "Company Cluster (Bank Cler AG)", "RELI": 66602117, "employees": 871}, "type": "Feature"}, {"bbox": [8.305893233564047, 47.04855645734669, 8.305893233564047, 47.04855645734669], "geometry": {"coordinates": [8.305893233564047, 47.04855645734669], "type": "Point"}, "id": "22", "properties": {"AI_name": "Company Cluster (Renaissance Lucerne Hotel)", "RELI": 66592112, "employees": 833}, "type": "Feature"}, {"bbox": [8.309738758927264, 47.04223045353527, 8.309738758927264, 47.04223045353527], "geometry": {"coordinates": [8.309738758927264, 47.04223045353527], "type": "Point"}, "id": "23", "properties": {"AI_name": "Company Cluster (TLV Immobilien AG)", "RELI": 66622105, "employees": 803}, "type": "Feature"}, {"bbox": [8.305864153431536, 47.04675756575674, 8.305864153431536, 47.04675756575674], "geometry": {"coordinates": [8.305864153431536, 47.04675756575674], "type": "Point"}, "id": "24", "properties": {"AI_name": "Company Cluster (Doris Bader Immobilien - Bader Immobilien Luzern AG)", "RELI": 66592110, "employees": 775}, "type": "Feature"}, {"bbox": [8.289128440200804, 47.07027108091912, 8.289128440200804, 47.07027108091912], "geometry": {"coordinates": [8.289128440200804, 47.07027108091912], "type": "Point"}, "id": "25", "properties": {"AI_name": "Company Cluster (MB Systembau AG)", "RELI": 66462136, "employees": 751}, "type": "Feature"}, {"bbox": [8.308641768128345, 47.055732106885664, 8.308641768128345, 47.055732106885664], "geometry": {"coordinates": [8.308641768128345, 47.055732106885664], "type": "Point"}, "id": "26", "properties": {"AI_name": "Company Cluster (SWISS KRONO Holding AG)", "RELI": 66612120, "employees": 744}, "type": "Feature"}, {"bbox": [8.285221663558078, 47.072998583372005, 8.285221663558078, 47.072998583372005], "geometry": {"coordinates": [8.285221663558078, 47.072998583372005], "type": "Point"}, "id": "27", "properties": {"AI_name": "Company Cluster (Imovag Immobilien Verwaltungs AG, Luzern)", "RELI": 66432139, "employees": 741}, "type": "Feature"}, {"bbox": [8.304562794036606, 47.04766694254236, 8.304562794036606, 47.04766694254236], "geometry": {"coordinates": [8.304562794036606, 47.04766694254236], "type": "Point"}, "id": "28", "properties": {"AI_name": "KPMG AG.", "RELI": 66582111, "employees": 738}, "type": "Feature"}, {"bbox": [7.842687870905013, 47.22921931756985, 7.842687870905013, 47.22921931756985], "geometry": {"coordinates": [7.842687870905013, 47.22921931756985], "type": "Point"}, "id": "29", "properties": {"AI_name": "Lucerne Psychiatry - Klinik St. Urban", "RELI": 63062310, "employees": 736}, "type": "Feature"}, {"bbox": [8.307223717256887, 47.049445956557186, 8.307223717256887, 47.049445956557186], "geometry": {"coordinates": [8.307223717256887, 47.049445956557186], "type": "Point"}, "id": "30", "properties": {"AI_name": "Company Cluster (Konkordia AG)", "RELI": 66602113, "employees": 735}, "type": "Feature"}, {"bbox": [8.300643997910521, 47.0494955372601, 8.300643997910521, 47.0494955372601], "geometry": {"coordinates": [8.300643997910521, 47.0494955372601], "type": "Point"}, "id": "31", "properties": {"AI_name": "Company Cluster (Wettstein Architekten AG)", "RELI": 66552113, "employees": 731}, "type": "Feature"}, {"bbox": [8.096862614834041, 47.17407841256809, 8.096862614834041, 47.17407841256809], "geometry": {"coordinates": [8.096862614834041, 47.17407841256809], "type": "Point"}, "id": "32", "properties": {"AI_name": "Company Cluster (Polygon Diagnostics AG)", "RELI": 64992250, "employees": 710}, "type": "Feature"}, {"bbox": [8.306641583094704, 47.01346801243169, 8.306641583094704, 47.01346801243169], "geometry": {"coordinates": [8.306641583094704, 47.01346801243169], "type": "Point"}, "id": "33", "properties": {"AI_name": "Company Cluster (Diversey)", "RELI": 66602073, "employees": 708}, "type": "Feature"}, {"bbox": [8.106185638909864, 47.18122079405108, 8.106185638909864, 47.18122079405108], "geometry": {"coordinates": [8.106185638909864, 47.18122079405108], "type": "Point"}, "id": "34", "properties": {"AI_name": " flexA2 AG", "RELI": 65062258, "employees": 706}, "type": "Feature"}, {"bbox": [8.3619820124323, 47.09579571816869, 8.3619820124323, 47.09579571816869], "geometry": {"coordinates": [8.3619820124323, 47.09579571816869], "type": "Point"}, "id": "35", "properties": {"AI_name": "Komax AG", "RELI": 67012165, "employees": 704}, "type": "Feature"}, {"bbox": [8.106062279832637, 47.1713269294414, 8.106062279832637, 47.1713269294414], "geometry": {"coordinates": [8.106062279832637, 47.1713269294414], "type": "Point"}, "id": "36", "properties": {"AI_name": "Company Cluster (Excellent Personaldienstleistungen Sursee AG)", "RELI": 65062247, "employees": 704}, "type": "Feature"}, {"bbox": [8.096785216618295, 47.16778230240348, 8.096785216618295, 47.16778230240348], "geometry": {"coordinates": [8.096785216618295, 47.16778230240348], "type": "Point"}, "id": "37", "properties": {"AI_name": "Company Cluster (AXA, Gesch\u00e4ftsstelle Vorsorge \u0026 Verm\u00f6gen)", "RELI": 64992243, "employees": 703}, "type": "Feature"}, {"bbox": [8.076443593570794, 47.23176122650199, 8.076443593570794, 47.23176122650199], "geometry": {"coordinates": [8.076443593570794, 47.23176122650199], "type": "Point"}, "id": "38", "properties": {"AI_name": "Ricardo Rodrigues Transportes", "RELI": 64832314, "employees": 695}, "type": "Feature"}, {"bbox": [8.315075279670234, 47.04668762790236, 8.315075279670234, 47.04668762790236], "geometry": {"coordinates": [8.315075279670234, 47.04668762790236], "type": "Point"}, "id": "39", "properties": {"AI_name": "Company Cluster (MSD Animal Health GmbH)", "RELI": 66662110, "employees": 693}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_7fd420e6047ac341766d0000c7eeed50.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["RELI", "employees", "AI_name"];
+    let aliases = ["RELI", "employees", "AI_name"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            geo_json_7fd420e6047ac341766d0000c7eeed50.addTo(map_2ea217b51f0761aa27dde3fba70b339d);
+        
+</script>
+</html>
